@@ -1,0 +1,17 @@
+{
+	"name": "create external table",
+	"properties": {
+		"content": {
+			"query": "CREATE DATABASE SCOPED CREDENTIAL cred_pratik\nwith \nIDENTITY='Managed Identity'\n\n\n\nCREATE EXTERNAL DATA SOURCE source_silver\nwith \n(\n    LOCATION ='https://deprojectdatalake.blob.core.windows.net/silver',\n    CREDENTIAL=cred_pratik\n)\n\n\n\n\n\nCREATE EXTERNAL DATA SOURCE source_gold\nwith \n(\n    LOCATION ='https://deprojectdatalake.blob.core.windows.net/gold',\n    CREDENTIAL=cred_pratik\n)\n\n\ncreate EXTERNAL FILE FORMAT format_parquet\n\nWITH(\n\n\n    FORMAT_TYPE=PARQUET ,\n    DATA_COMPRESSION='org.apache.hadoop.io.compress.SnappyCodec'\n)\n\n\n\n-- create external table exsales ------------\n\n\ncreate EXTERNAL TABLE gold.extsales\n\nWITH(\n\n    LOCATION = 'extsales',\n    DATA_SOURCE=source_gold,\n    FILE_FORMAT=format_parquet\n\n)\nas \nselect * from gold.sales\n\n\n\n\nSELECT * FROM gold.extsales\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "awdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "create views gold",
+	"properties": {
+		"content": {
+			"query": "-- Create View Calendar\nCREATE VIEW gold.calendar\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Calendar/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Customers\nCREATE VIEW gold.customers\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Customers/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Products\nCREATE VIEW gold.products\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Products/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Products_Subcategories\nCREATE VIEW gold.products_subcategories\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Products_Subcatagories/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Returns\nCREATE VIEW gold.returns\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Returns/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Sales\nCREATE VIEW gold.sales\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Sales/',\n    FORMAT='PARQUET'\n) AS quer1;\n\n-- Create View Territory\nCREATE VIEW gold.territory\nAS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://deprojectdatalake.blob.core.windows.net/silver/AdventureWorks_Territory/',\n    FORMAT='PARQUET'\n) AS quer1;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "awdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
